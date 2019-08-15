@@ -104,7 +104,7 @@ def send_email(to, subject, html_content, files=None, dryrun=False, cc=None,
 
 def _post_sendgrid_mail(mail_data):
     log = LoggingMixin().log
-    sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
+    sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
     response = sg.client.mail.send.post(request_body=mail_data)
     # 2xx status code.
     if 200 <= response.status_code < 300:
